@@ -28,7 +28,7 @@ public class Tickets{
             Submit only Java source code files. Also submit valid_tix.txt   
 
         */
-
+        
         String  ticket  = "123454";                            
         String  last = ticket.substring(ticket.length() - 1);                                                   
         int     last_digit = Integer.valueOf(last);

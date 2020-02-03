@@ -6,12 +6,15 @@ import java.io.IOException;
 public class Test{
     public static void main(String args[]){
         try{
+            //Create File pull and scanner module
             File ticketList = new File("tickets.txt");
             Scanner fileScanner = new Scanner(ticketList);
 
+            //Create File writting, to store valid tickets
             FileWriter vTickets = new FileWriter("ValidTickets.txt");
 
             int count = 0;
+            //Loop to scan through ticket.txt, validating each ticket #
             while(fileScanner.hasNextLine()){
                 String line = fileScanner.nextLine();
                   
@@ -22,18 +25,18 @@ public class Test{
                 int     remainder = ticket_number % 7; 
                 boolean validity = remainder == last_digit; 
 
-                  
+                //when valid ticket is found, ticket # is added to the file
                 if (validity == true){
+
                     vTickets.write(line+"\n");
-                    //count++;
-                    //System.out.println(count);
-                    //System.out.printf(ticket+"\n");
+
                 }
             }
+            //close out file reading/writting methods 
             vTickets.close();
             fileScanner.close();
         }
-
+        //Catch for determining errors
         catch(FileNotFoundException fnf){
             System.out.println("error: FNF");
         
@@ -42,3 +45,4 @@ public class Test{
         }
     }
 }
+//End code
