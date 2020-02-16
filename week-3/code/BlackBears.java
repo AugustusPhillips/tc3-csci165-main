@@ -4,10 +4,11 @@ import java.io.FileReader;
 
 public class BlackBears{
 
-    public static void main(String[] args){
+    final static int NUM_REGIONS   = 7;
+    final static int NUM_MONTHS    = 12;
 
-        final int NUM_REGIONS   = 7;
-        final int NUM_MONTHS    = 12;
+    public static void main(String[] args){
+        
 
         String      fileName    = "";
         int[][]     sightings   = new int[NUM_REGIONS][NUM_MONTHS];
@@ -15,29 +16,22 @@ public class BlackBears{
                                     "June", "July", "August", "September", "October",
                                     "November", "December"};
 
-        if(args.length > 0){
+        if(args.length > 0){ //Allows user to input filename onto -java BlackBears (file)
             fileName = args[0];
+            fillArray(sightings, fileName);//calls the method
 
-            try{
-                FileReader fr   = new FileReader(fileName);
-                Scanner scanner = new Scanner(fr);
-
-                // load the table with the sightings data
-                for(int i = 0; i < NUM_REGIONS; i++){
-                    String line     = scanner.nextLine();
-                    String[] values = line.split(",");
-                    for(int j = 0; j < NUM_MONTHS; ++j){
-                        sightings[i][j] = Integer.parseInt(values[j]);
-                    } // end inner for
-                } // end outer for
+            
 
                 // compute average per month
                 for(int i = 0; i < NUM_MONTHS; ++i){
                     double sum = 0.0;
-                    for(int j = 0; j < NUM_REGIONS; ++j)
+                    for(int j = 0; j < NUM_REGIONS; ++j){
                         sum += sightings[j][i];
-                    //System.out.printf("Average for %s:\t %.2f \n", months[i], sum / NUM_REGIONS);
+                
+                        //System.out.printf("Average for %s:\t %.2f \n", months[i], sum / NUM_REGIONS);
+                    }
                 }
+
 
                 //System.out.println("\n");
 
@@ -48,14 +42,27 @@ public class BlackBears{
                         sum += sightings[i][j];
                     System.out.printf("Average for Region %d:\t %.2f \n", i+1, sum / NUM_MONTHS);
                 }
-                
-                
-                scanner.close();
-            }
-            catch(IOException ioe){
-                System.out.println(ioe.getMessage());
             }
 
         }else System.out.println("No file name specified . . . aborting");
-    }
-}
+    } //End of main
+    public static void fillArray(int[][] array, String fileName){
+        try{
+            FileReader fr   = new FileReader(fileName);
+            Scanner scanner = new Scanner(fr);
+
+            // load the table with the sightings data
+            for(int i = 0; i < NUM_REGIONS; i++){
+                String line     = scanner.nextLine();
+                String[] values = line.split(",");
+                for(int j = 0; j < NUM_MONTHS; ++j){
+                    array[i][j] = Integer.parseInt(values[j]);
+                } // end inner for
+            } // end outer for
+            fr.close();
+            scanner.close();
+        } //end of try
+        catch(IOException ioe){
+            System.out.println(ioe.getMessage());
+        }
+} //End of the class
