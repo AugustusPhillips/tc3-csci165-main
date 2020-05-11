@@ -1,8 +1,8 @@
 import java.util.ArrayList;
-
+import java.awt.Color;
 public class Nazgul extends Creature {
     private int replicationCounter = 8;
-    private final int MAX_HEALTH = 150;
+    private final double MAX_HEALTH = 150;
     //Base items that every Nazgul will have
     Blade morgalBlade = new Blade(55);
     //Armor wraithCloak = new Armor(15);
@@ -24,21 +24,21 @@ public class Nazgul extends Creature {
         return new Nazgul(getPositionX()+1, getPositionY());
     }
     public void move(){
-        /*
-        if(!(replicationCounter == 0)){
-            
-            setPositionX(getPositionX()+2);
-            setPosiitonY(getPositionY());
-            replicationCounter -=1;
-        }else{
-            replicate();
-            resetRepCount();
-        }
-        */
+        
         System.out.println("move() method is unfinished but called on " +getTitle());
     }
     public void resetRepCount(){
         replicationCounter = 8;
+    }
+    public Color color(){
+        double input = getHealth();
+        int color = (int) (input / MAX_HEALTH * 255);
+
+        color = Math.abs(color - 255);
+
+        Color colour = new Color(color, color, color);
+        return colour;
+        
     }
     public String toString(){
         return "Nazgul created at: (" +getPositionX() +", " +getPositionY() +

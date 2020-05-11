@@ -1,5 +1,6 @@
+import java.awt.Color;
 public class Ranger extends Creature{
-    private final int MAX_HEALTH = 120;
+    private final double MAX_HEALTH = 119;
     Blade rangersBlade = new Blade("Rangers Sword", 80, 9);
 
     public Ranger(int x, int y){
@@ -17,6 +18,14 @@ public class Ranger extends Creature{
     }
     public Creature replicate(){
         return new Ranger(getPositionX()+1,getPositionY());
+    }
+    public Color color(){
+        double startHue = 180;
+        double endHue = 315;
+        double percentage = (getHealth()/getMaxHealth());
+        double hue = ((percentage * (endHue - startHue)) + startHue) / 360;
+        Color color = Color.getHSBColor((float)hue, (float).9, (float).9);
+        return color;
     }
     public String toString(){
         return "Ranger created at: (" +getPositionX() +", " +getPositionY() +

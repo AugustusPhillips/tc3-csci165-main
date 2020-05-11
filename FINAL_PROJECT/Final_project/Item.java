@@ -25,6 +25,11 @@ public abstract class Item {
     public boolean getActive(){
         return this.active;
     }
-
+    public int getPositionX(){
+        return this.positionX;
+    }
+    public int getPositionY(){
+        return this.positionY;
+    }
 
 }//End of Item class

@@ -1,0 +1,21 @@
+Final Project Status:
+
+Creature.java finished(I think)
+Hobbit.java finished(I think)
+Nazgul.java unfinished: move(), replicate(), loss of health factor
+Ranger.java unfinished: move(), replicate(), loss of health factor
+Troll.java unfinished:  move(), replicate(), loss of health factor
+
+Item.java finished
+MagicalItem.java finished
+Blade.java finished
+HealingItem.java finished
+Armor.java finished
+
+gameDrawer is missing pretty much everything, couldn't figure out repainting the Jpanel. Creatures do not fully interact with eachother due to missing methods
+Items are not implemented into gameDrawer. 
+
+UnitTests are not written.
+
+Sorry about this project and semester. Time was not my friend this spring and I usually had to put CSCI165 work behind other classes due to later due dates. 
+I will hopefully be in CSCI205 this fall or spring, schedule depending, along with more time on my hands hopefully.
